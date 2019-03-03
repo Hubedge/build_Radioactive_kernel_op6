@@ -6,7 +6,6 @@ env:
 - COMMIT_SHA=85c61eab523fc36b610661ef7ba4a072dacb13c8
 
 install:
-install:
 - wget https://github.com/Hubedge/aarch64-linux-android/releases/download/20190303-3/aarch64-linux-android.tar.xz
 - tar xf aarch64-linux-android.tar.xz
 - export CROSS_COMPILE=$(pwd)/aarch64-linux-android/bin/aarch64-linux-android-
