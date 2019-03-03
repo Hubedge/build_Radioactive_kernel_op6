@@ -1,0 +1,33 @@
+language: c
+
+compiler: gcc
+
+env:
+- COMMIT_SHA=85c61eab523fc36b610661ef7ba4a072dacb13c8
+
+install:
+- wget https://developer.arm.com/-/media/Files/downloads/gnu-a/8.2-2019.01/gcc-arm-8.2-2019.01-x86_64-aarch64-linux-gnu.tar.xz
+- tar xf gcc-arm-8.2-2019.01-x86_64-aarch64-linux-gnu.tar.xz
+- export CROSS_COMPILE=$(pwd)/gcc-arm-8.2-2019.01-x86_64-aarch64-linux-gnu/bin/aarch64-linux-gnu-
+- export ARCH=arm64
+
+script:
+- git clone -n https://github.com/acuicultor/Radioactive_kernel_op6
+- cd Radioactive_kernel_op6
+- git checkout ${COMMIT_SHA}
+- patch Makefile < ../Makefile.patch
+- sed -i '4d' Makefile
+- sed -i '4iEXTRAVERSION = -Radioactive-'${COMMIT_SHA:0:7} Makefile
+- mkdir -p out
+- make O=out mrproper
+- make O=out radioactive_defconfig
+- make O=out -j$(nproc --all)
+
+deploy:
+  provider: releases
+  api_key:
+    secure: J+nZngv/VDuZh4tE5O5gb0UHZ3ZWk1TCtBNw3VMTkaA4Xawd/39o268c4lcqxQ+a8lpuE1QgpJ7QVSpV4VKEznrZW8DZSPJ+CKV2acz9hpXOkYiY24rvp7aRMxYv0+7Vx+n7rSxVcbfDfoxmH0ELXHjqxJIzdYhw37hSvW3ElIEWhZqvgHVmJiveepFu5EVALYdJBAH9USKh7TFwmaz0VSZRm+GyAasE8nEyDy7WgX68St1rluzxnh3374fzYJkieEer3jIH3mWQrvW0QTlp39FrCbCZa/SRM6/24Pd9loBGIkrUglkzZ2ZdLyn/3eak7XNKOHCMUUEBMRfoTDm8RWpoEeDIuCkcAmnl5X6L5+FBksXL2m3FP1T+03jTaWhgjZ3GDKyEi14S0Zm0AzKn08OOSGfTAOaq3DALGiNpTfiagMohch1ALj8KIIROwm0mpbQOlOkNUHKBDq03+6XnS+NO5j9evZ7zXKqO1f2tRoPxSr8u402mPqtpk8AvaT2YwUWJygWwAbPYBLXDoKXVSNf1nXMQzeSyrpkGQDpL5AiWLJ8XycVvjVhDsZrY4+gXR7C7WstO+/E/DMOMCMCHQB4zE8wlmbQHtSKlItajLc7fQ28xZs1TkfSQJ+hRwBr7YZtmkJVPUA7bm2KtCBsB0833fPOSC8kLcg/VOEWS0so=
+  file: "/home/travis/build/Hubedge/build_Radioactive_kernel_op6/Radioactive_kernel_op6/out/arch/arm64/boot/Image.gz-dtb"
+  skip_cleanup: true
+  on:
+    tags: true
