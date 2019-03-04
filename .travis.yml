@@ -6,9 +6,9 @@ env:
 - COMMIT_SHA=b85466d67297f82aaa4b71093d96cdf743088dac
 
 install:
-- wget https://github.com/Hubedge/aarch64-linux-android/releases/download/20190303-3/aarch64-linux-android.tar.xz
-- tar xf aarch64-linux-android.tar.xz
-- export CROSS_COMPILE=$(pwd)/aarch64-linux-android/bin/aarch64-linux-android-
+- wget https://github.com/Hubedge/build-tools-gcc/releases/download/20190304-1/aarch64-linux-gnu.tar.xz
+- tar xf aarch64-linux-gnu.tar.xz
+- export CROSS_COMPILE=$(pwd)/aarch64-linux-gnu/bin/aarch64-linux-gnu-
 - export ARCH=arm64
 
 script:
