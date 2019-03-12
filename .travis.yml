@@ -12,9 +12,10 @@ install:
 - export ARCH=arm64
 
 script:
-- git clone -n https://github.com/acuicultor/Radioactive_kernel_op6
+- wget https://github.com/acuicultor/Radioactive_kernel_op6/archive/${COMMIT_SHA}.zip
+- unzip -q ${COMMIT_SHA}.zip
+- mv Radioactive_kernel_op6-${COMMIT_SHA} Radioactive_kernel_op6
 - cd Radioactive_kernel_op6
-- git checkout ${COMMIT_SHA}
 - patch Makefile < ../Makefile.patch
 - sed -i '4d' Makefile
 - sed -i '4iEXTRAVERSION = -Radioactive-'${COMMIT_SHA:0:7} Makefile
