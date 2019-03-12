@@ -12,7 +12,7 @@ install:
 - export ARCH=arm64
 
 script:
-- git clone -n https://github.com/acuicultor/Radioactive_kernel_op6 --depth=10000
+- git clone -n https://github.com/acuicultor/Radioactive_kernel_op6
 - cd Radioactive_kernel_op6
 - git checkout ${COMMIT_SHA}
 - patch Makefile < ../Makefile.patch
