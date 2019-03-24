@@ -3,7 +3,7 @@ language: c
 compiler: gcc
 
 env:
-- COMMIT_SHA=b13785a3ee5384aceb7f87b3f84184c5287bda68
+- COMMIT_SHA=d577ecd8e6e625549bbfa826ca11548a48771577
 
 install:
 - wget https://developer.arm.com/-/media/Files/downloads/gnu-a/8.2-2019.01/gcc-arm-8.2-2019.01-x86_64-aarch64-linux-gnu.tar.xz
