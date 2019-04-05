@@ -6,9 +6,9 @@ env:
 - COMMIT_SHA=d577ecd8e6e625549bbfa826ca11548a48771577
 
 install:
-- wget https://developer.arm.com/-/media/Files/downloads/gnu-a/8.2-2019.01/gcc-arm-8.2-2019.01-x86_64-aarch64-linux-gnu.tar.xz
-- tar xf gcc-arm-8.2-2019.01-x86_64-aarch64-linux-gnu.tar.xz
-- export CROSS_COMPILE=$(pwd)/gcc-arm-8.2-2019.01-x86_64-aarch64-linux-gnu/bin/aarch64-linux-gnu-
+- wget https://developer.arm.com/-/media/Files/downloads/gnu-a/8.3-2019.03/binrel/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu.tar.xz
+- tar xf gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu.tar.xz
+- export CROSS_COMPILE=$(pwd)/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu/bin/aarch64-linux-gnu-
 - export ARCH=arm64
 
 script:
