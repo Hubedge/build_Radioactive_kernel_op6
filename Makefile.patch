@@ -1,11 +1,10 @@
---- Makefile	2019-03-24 14:35:12.915665200 +0800
-+++ Makefile.new	2019-03-24 14:37:55.997045000 +0800
-@@ -393,7 +393,7 @@
- KBUILD_AFLAGS   := -D__ASSEMBLY__
- KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
- 		   -fno-strict-aliasing -fno-common -fshort-wchar -ftree-vectorize \
--		   -Werror-implicit-function-declaration -mcpu=cortex-a75.cortex-a55+crypto -mtune=cortex-a75.cortex-a55 \
-+		   -Werror-implicit-function-declaration -mcpu=cortex-a75.cortex-a55+crypto+sve+dotprod+fp16fml \
+--- Makefile	2019-04-11 16:14:02.143017800 +0800
++++ Makefile.new	2019-04-11 16:21:56.223125800 +0800
+@@ -395,6 +395,7 @@
+ 		   -fno-strict-aliasing -fno-common -fshort-wchar \
+ 		   -Werror-implicit-function-declaration \
+ 		   -Wno-format-security -Wno-misleading-indentation -Wno-maybe-uninitialized -Wno-unused-function -Wno-address \
++		   -mcpu=cortex-a75.cortex-a55+crypto+sve+dotprod+fp16fml \
  		   -std=gnu89
  KBUILD_CPPFLAGS := -D__KERNEL__
  KBUILD_AFLAGS_KERNEL :=
