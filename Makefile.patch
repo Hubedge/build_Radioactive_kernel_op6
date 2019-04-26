@@ -1,10 +1,11 @@
---- Makefile	2019-04-11 16:14:02.143017800 +0800
-+++ Makefile.new	2019-04-11 16:21:56.223125800 +0800
-@@ -395,6 +395,7 @@
- 		   -fno-strict-aliasing -fno-common -fshort-wchar \
- 		   -Werror-implicit-function-declaration \
- 		   -Wno-format-security -Wno-misleading-indentation -Wno-maybe-uninitialized -Wno-unused-function -Wno-address \
-+		   -mcpu=cortex-a75.cortex-a55+crypto+sve+dotprod+fp16fml \
+--- Makefile	2019-04-26 14:11:26.058448400 +0800
++++ Makefile.new	2019-04-26 14:12:13.122025000 +0800
+@@ -398,7 +398,7 @@
  		   -std=gnu89
- KBUILD_CPPFLAGS := -D__KERNEL__
- KBUILD_AFLAGS_KERNEL :=
+ 
+ # Optimization for sdm845
+-KBUILD_CFLAGS	+= -mcpu=cortex-a75.cortex-a55 -mtune=cortex-a75.cortex-a55
++KBUILD_CFLAGS	+= -mcpu=cortex-a75.cortex-a55+crypto+sve+dotprod+fp16fml
+ 
+ # This doesn't need 835769/843419 erratum fixes.
+ # Some toolchains enable those fixes automatically, so opt-out.
